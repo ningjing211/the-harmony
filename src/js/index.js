@@ -1,3 +1,5 @@
+console.log("index.js is working ");
+
 import * as THREE from "three"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from "three/examples/jsm/loaders/gltfloader"
@@ -39,48 +41,93 @@ let lastPosition = {
     ry: null,
     rz: null
 }
+
 let detailsImage = [
     {
-        url: "https://www.youtube.com/watch?v=87MPqPynrXc",
+        url: "https://youtu.be/0Hl-YaBiZP4?si=AREKH0_5oWM90cyk",
         name: "Transformation Dark Vador\n - Anakin devient Dark Vador"
     },
     {
-        url: "https://www.youtube.com/watch?v=FX8rsh83bGk",
+        url: "https://youtu.be/_axK_NwSHME?si=RfhA2rrUqilH6P_7",
         name: "Arrivée Dark Vador\n Étoile de la Mort"
     },
     {
-        url: "https://www.youtube.com/watch?v=wxL8bVJhXCM",
+        url: "https://youtu.be/rI2B6QVXFKQ?si=_7z5M-oi1q1C-W0j",
         name: "Darth Vader's rage"
     },
     {
-        url: "https://www.youtube.com/watch?v=Ey68aMOV9gc",
+        url: "https://youtu.be/3dy7laslWBQ?si=nF8LlZmc7PDzP6Ux",
         name: "VADER EPISODE 1: SHARDS\n OF THE PAST"
     },
     {
-        url: "https://www.youtube.com/watch?v=3vZsVKD8BQg",
+        url: "https://youtu.be/ijp6xxQqNDg?si=3i8-fqSdyGefiBUQ",
         name: "Je suis ton père!"
     },
     {
-        url: "https://www.youtube.com/watch?v=7Zp66FhjlPU",
+        url: "https://youtu.be/oRWBo6JOs3o?si=eMQK5JqRT8dCCPEX",
         name: "Darth Vader Goes Shopping"
     },
     {
-        url: "https://www.youtube.com/watch?v=68vPtAE3cZE",
+        url: "https://youtu.be/SvbLv9jML1E?si=ir2nub2cQkbDsITb",
         name: "Votre manque de foi\n me consterne"
     },
     {
-        url: "https://www.youtube.com/watch?v=kocd_C2M9RU",
+        url: "https://youtu.be/T9w4U-0nSVA?si=D3rCc3HmEW9yzaCO",
         name: "LA SOUFFRANCE MÈNE\n AU CÔTÉ OBSCUR"
     },
     {
-        url: "https://www.youtube.com/watch?v=k21ONzrwVLY",
+        url: "https://youtu.be/XHJj8xiZrQM?si=EHSUmZRZHYj87Otj",
         name: "Lord Vader: A Star\n Wars Story"
     },
     {
-        url: "https://www.youtube.com/watch?v=JucYYmeh_QY",
+        url: "https://www.youtube.com/watch?v=haZhqhjHr8A",
         name: 'Dark vador "Hommage"'
     }
-]
+];
+
+
+// let detailsImage = [
+//     {
+//         url: "https://www.youtube.com/watch?v=0Hl-YaBiZP4",
+//         name: "Transformation Dark Vador\n - Anakin devient Dark Vador"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=example2",
+//         name: "Arrivée Dark Vador\n Étoile de la Mort"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=example3",
+//         name: "Darth Vader's rage"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=example4",
+//         name: "VADER EPISODE 1: SHARDS\n OF THE PAST"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=3vZsVKD8BQg",
+//         name: "Je suis ton père!"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=7Zp66FhjlPU",
+//         name: "Darth Vader Goes Shopping"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=68vPtAE3cZE",
+//         name: "Votre manque de foi\n me consterne"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=kocd_C2M9RU",
+//         name: "LA SOUFFRANCE MÈNE\n AU CÔTÉ OBSCUR"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=k21ONzrwVLY",
+//         name: "Lord Vader: A Star\n Wars Story"
+//     },
+//     {
+//         url: "https://www.youtube.com/watch?v=JucYYmeh_QY",
+//         name: 'Dark vador "Hommage"'
+//     }
+// ]
 
 //-------------------------------------------------------------------------------------------------------------------
 // Base
@@ -133,10 +180,11 @@ window.addEventListener("mousemove", e => {
 
 // Audio
 
-const music = new Audio("sounds/music.mp3")
-music.volume = 0.05
+const music = new Audio("/public/sounds/music-bg.mp3");
 
-const respiration = new Audio("sounds/respiration.mp3")
+music.volume = 0.06
+
+const respiration = new Audio("/public/sounds/music-bg.mp3")
 respiration.volume = 0.01
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -227,16 +275,28 @@ const continueAnimation = () => {
 
 const textureLoader = new THREE.TextureLoader(loadingManager)
 
-const imagesLoad1 = textureLoader.load("./images/img1.jpg")
-const imagesLoad2 = textureLoader.load("./images/img2.jpg")
-const imagesLoad3 = textureLoader.load("./images/img3.jpg")
-const imagesLoad4 = textureLoader.load("./images/img4.jpg")
-const imagesLoad5 = textureLoader.load("./images/img5.jpg")
-const imagesLoad6 = textureLoader.load("./images/img6.jpg")
-const imagesLoad7 = textureLoader.load("./images/img7.jpg")
-const imagesLoad8 = textureLoader.load("./images/img8.jpg")
-const imagesLoad9 = textureLoader.load("./images/img9.jpg")
-const imagesLoad10 = textureLoader.load("./images/img10.jpg")
+// const imagesLoad1 = textureLoader.load("/public/images/img1.jpg")
+// const imagesLoad2 = textureLoader.load("/public/images/img2.jpg")
+// const imagesLoad3 = textureLoader.load("/public/images/img3.jpg")
+// const imagesLoad4 = textureLoader.load("/public/images/img4.jpg")
+// const imagesLoad5 = textureLoader.load("/public/images/img5.jpg")
+// const imagesLoad6 = textureLoader.load("/public/images/img6.jpg")
+// const imagesLoad7 = textureLoader.load("/public/images/img7.jpg")
+// const imagesLoad8 = textureLoader.load("/public/images/img8.jpg")
+// const imagesLoad9 = textureLoader.load("/public/images/img9.jpg")
+// const imagesLoad10 = textureLoader.load("/public/images/img10.jpg")
+
+const imagesLoad1 = textureLoader.load("/public/images2/image1.avif")
+const imagesLoad2 = textureLoader.load("/public/images2/image2.avif")
+const imagesLoad3 = textureLoader.load("/public/images2/image3.avif")
+const imagesLoad4 = textureLoader.load("/public/images2/image4.avif")
+const imagesLoad5 = textureLoader.load("/public/images2/image5.avif")
+const imagesLoad6 = textureLoader.load("/public/images2/image6.avif")
+const imagesLoad7 = textureLoader.load("/public/images2/image7.avif")
+const imagesLoad8 = textureLoader.load("/public/images2/image8.avif")
+const imagesLoad9 = textureLoader.load("/public/images2/image9.avif")
+const imagesLoad10 = textureLoader.load("/public/images2/image10.avif")
+
 const images = [imagesLoad1, imagesLoad2, imagesLoad3, imagesLoad4, imagesLoad5, imagesLoad6, imagesLoad7, imagesLoad8, imagesLoad9, imagesLoad10]
 
 const gltfLoader = new GLTFLoader(loadingManager)
@@ -244,7 +304,7 @@ let models = []
 
 // Dark Vador
 gltfLoader.load(
-    "models/Dark_vador/scene.gltf",
+    "/public/models/Dark_vador/scene.gltf",
     (gltf) => {
         gltf.scene.scale.set(5, 5, 5)
         gltf.scene.position.y = initialPositionMeshY
@@ -272,7 +332,7 @@ let startTouch = 0
 
 // Rock
 gltfLoader.load(
-    "models/Rock/scene.gltf",
+    "/public/models/Rock/scene.gltf",
     (gltf) => {
         gltf.scene.scale.set(2.5, 2, 2.5)
         gltf.scene.position.y = initialPositionMeshY - 1.73
@@ -438,7 +498,7 @@ particuleGeometry.setAttribute("position", new THREE.BufferAttribute(particulesP
 particuleGeometry.setAttribute("aScale", new THREE.BufferAttribute(particulesScales, 1))
 
 const particulesMaterial = new THREE.ShaderMaterial({
-    blanding: THREE.AdditiveBlending,
+    blending: THREE.AdditiveBlending,
     vertexShader: vertexParticulesShader,
     fragmentShader: fragmentParticulesShader,
     uniforms: {
