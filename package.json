@@ -18,7 +18,7 @@
     "express": "^4.19.2",
     "gsap": "^3.12.5",
     "parcel-plugin-static-files-copy": "^2.6.0",
-    "three": "^0.133.1",
+    "three": "^0.168.0",
     "troika-three-text": "^0.43.0"
   },
   "devDependencies": {

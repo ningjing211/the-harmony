@@ -1,15 +1,8 @@
 {
-    "builds": [
-      {
-        "src": "dist/**/*",
-        "use": "@vercel/static"
+    "build": {
+      "env": {
+        "NODE_VERSION": "14"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html"
-      }
-    ]
+    }
   }
   
