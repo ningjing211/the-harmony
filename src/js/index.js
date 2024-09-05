@@ -413,7 +413,7 @@ scene.add(pointLight)
 //-------------------------------------------------------------------------------------------------------------------
 
 // mesh background
-const backgroundPlane = new THREE.PlaneBufferGeometry(2, 2)
+const backgroundPlane = new THREE.PlaneGeometry(2, 2)
 const backgroundMaterial = new THREE.ShaderMaterial({
     vertexShader: vertexBackgroundShader,
     fragmentShader: fragmentBackgroundShader,
