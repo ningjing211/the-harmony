@@ -2,7 +2,7 @@ console.log("index.js is working ");
 
 import * as THREE from "three"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GLTFLoader } from "three/examples/jsm/loaders/gltfloader"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Text } from 'troika-three-text'
 import { gsap, Power1 } from "gsap"
 import vertexPlaneShader from "../shaders/planes/vertex.glsl"
