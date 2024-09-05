@@ -40,8 +40,8 @@ void main() {
 
     float strength = noise(pos * 2.0);
 
-    vec3 color1 = vec3(0.098,0.22,0.188); 
-    vec3 color2 = vec3(0.376,0.357,0.494); 
+    vec3 color1 = vec3(0.098,0.22,0.388); 
+    vec3 color2 = vec3(0.376,0.357,0.694); 
 
 
 

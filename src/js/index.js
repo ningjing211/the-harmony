@@ -180,9 +180,9 @@ window.addEventListener("mousemove", e => {
 
 // Audio
 
-const music = new Audio("/public/sounds/music-bg.mp3");
+const music = new Audio("/public/sounds/quartz-2013.mp3");
 
-music.volume = 0.09
+music.volume = 0.2
 
 const respiration = new Audio("/public/sounds/music-bg.mp3")
 respiration.volume = 0.01
