@@ -1,6 +1,7 @@
 {
-    "rewrites": [
-      { "source": "/public/(.*)", "destination": "/public/$1" }
+    "routes": [
+      { "src": "/public/(.*)", "dest": "/public/$1" },
+      { "src": "/dist/(.*)", "dest": "/dist/$1" }
     ]
   }
   

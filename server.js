@@ -9,7 +9,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Serve static files from the "dist" directory (the built files from Parcel)
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/src', express.static(path.join(__dirname, 'src')));
 
 
 // Serve the main HTML file from the "dist" directory (after build)
