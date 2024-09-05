@@ -1,4 +1,4 @@
-console.log("server.js is working "); 
+
 
 const express = require('express');
 const path = require('path');
@@ -9,6 +9,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Serve static files from the "dist" directory (the built files from Parcel)
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/src', express.static(path.join(__dirname, 'src')));
+
 
 // Serve the main HTML file from the "dist" directory (after build)
 app.get('/', (req, res) => {
