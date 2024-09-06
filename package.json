@@ -5,6 +5,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
+  "postbuild": "cp -R public/* dist/",
     "serve": "node server.js"
   },
   "author": "Your Name",
