@@ -7,6 +7,10 @@
     ],
     "routes": [
       {
+        "src": "/(css|images|sounds|js)/(.*)", 
+        "dest": "/$1/$2"
+      },
+      {
         "src": "/(.*)",
         "dest": "/index.html"
       }
