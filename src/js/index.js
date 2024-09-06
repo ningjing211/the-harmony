@@ -180,11 +180,11 @@ window.addEventListener("mousemove", e => {
 
 // Audio
 
-const music = new Audio("/public/sounds/music-bg.mp3");
+const music = new Audio("/sounds/music-bg.mp3");
 
 music.volume = 0.1
 
-const respiration = new Audio("/public/sounds/music-bg.mp3")
+const respiration = new Audio("/sounds/music-bg.mp3")
 respiration.volume = 0.01
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -275,27 +275,27 @@ const continueAnimation = () => {
 
 const textureLoader = new THREE.TextureLoader(loadingManager)
 
-// const imagesLoad1 = textureLoader.load("/public/images/img1.jpg")
-// const imagesLoad2 = textureLoader.load("/public/images/img2.jpg")
-// const imagesLoad3 = textureLoader.load("/public/images/img3.jpg")
-// const imagesLoad4 = textureLoader.load("/public/images/img4.jpg")
-// const imagesLoad5 = textureLoader.load("/public/images/img5.jpg")
-// const imagesLoad6 = textureLoader.load("/public/images/img6.jpg")
-// const imagesLoad7 = textureLoader.load("/public/images/img7.jpg")
-// const imagesLoad8 = textureLoader.load("/public/images/img8.jpg")
-// const imagesLoad9 = textureLoader.load("/public/images/img9.jpg")
-// const imagesLoad10 = textureLoader.load("/public/images/img10.jpg")
+// const imagesLoad1 = textureLoader.load("/images/img1.jpg")
+// const imagesLoad2 = textureLoader.load("/images/img2.jpg")
+// const imagesLoad3 = textureLoader.load("/images/img3.jpg")
+// const imagesLoad4 = textureLoader.load("/images/img4.jpg")
+// const imagesLoad5 = textureLoader.load("/images/img5.jpg")
+// const imagesLoad6 = textureLoader.load("/images/img6.jpg")
+// const imagesLoad7 = textureLoader.load("/images/img7.jpg")
+// const imagesLoad8 = textureLoader.load("/images/img8.jpg")
+// const imagesLoad9 = textureLoader.load("/images/img9.jpg")
+// const imagesLoad10 = textureLoader.load("/images/img10.jpg")
 
-const imagesLoad1 = textureLoader.load("/public/images2/image1.avif")
-const imagesLoad2 = textureLoader.load("/public/images2/image2.avif")
-const imagesLoad3 = textureLoader.load("/public/images2/image3.avif")
-const imagesLoad4 = textureLoader.load("/public/images2/image4.avif")
-const imagesLoad5 = textureLoader.load("/public/images2/image5.avif")
-const imagesLoad6 = textureLoader.load("/public/images2/image6.avif")
-const imagesLoad7 = textureLoader.load("/public/images2/image7.avif")
-const imagesLoad8 = textureLoader.load("/public/images2/image8.avif")
-const imagesLoad9 = textureLoader.load("/public/images2/image9.avif")
-const imagesLoad10 = textureLoader.load("/public/images2/image10.avif")
+const imagesLoad1 = textureLoader.load("/images2/image1.avif")
+const imagesLoad2 = textureLoader.load("/images2/image2.avif")
+const imagesLoad3 = textureLoader.load("/images2/image3.avif")
+const imagesLoad4 = textureLoader.load("/images2/image4.avif")
+const imagesLoad5 = textureLoader.load("/images2/image5.avif")
+const imagesLoad6 = textureLoader.load("/images2/image6.avif")
+const imagesLoad7 = textureLoader.load("/images2/image7.avif")
+const imagesLoad8 = textureLoader.load("/images2/image8.avif")
+const imagesLoad9 = textureLoader.load("/images2/image9.avif")
+const imagesLoad10 = textureLoader.load("/images2/image10.avif")
 
 const images = [imagesLoad1, imagesLoad2, imagesLoad3, imagesLoad4, imagesLoad5, imagesLoad6, imagesLoad7, imagesLoad8, imagesLoad9, imagesLoad10]
 
@@ -304,7 +304,7 @@ let models = []
 
 // Dark Vador
 gltfLoader.load(
-    "/public/models/Dark_vador/scene.gltf",
+    "/models/Dark_vador/scene.gltf",
     (gltf) => {
         gltf.scene.scale.set(5, 5, 5)
         gltf.scene.position.y = initialPositionMeshY
@@ -332,7 +332,7 @@ let startTouch = 0
 
 // Rock
 gltfLoader.load(
-    "/public/models/Rock/scene.gltf",
+    "/models/Rock/scene.gltf",
     (gltf) => {
         gltf.scene.scale.set(2.5, 2, 2.5)
         gltf.scene.position.y = initialPositionMeshY - 1.73
