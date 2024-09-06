@@ -6,6 +6,7 @@ const app = express();
 
 // Serve static assets from the "public" directory (for images, sounds, etc.)
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'src')));
 
 // Serve static files from the "dist" directory (the built files from Parcel)
 app.use(express.static(path.join(__dirname, 'dist')));
