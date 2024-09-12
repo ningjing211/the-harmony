@@ -44,46 +44,46 @@ let lastPosition = {
 
 let detailsImage = [
     {
-        url: "https://youtu.be/0Hl-YaBiZP4?si=AREKH0_5oWM90cyk",
-        name: "Transformation Dark Vador\n - Anakin devient Dark Vador"
+        "url": "https://youtu.be/Yz6Ffc6ShCE?si=iVwHWQeESMZ5N2wR",
+        "name": "Transformation Dark Vador\n - Anakin devient Dark Vador"
     },
     {
-        url: "https://youtu.be/_axK_NwSHME?si=RfhA2rrUqilH6P_7",
-        name: "Arrivée Dark Vador\n Étoile de la Mort"
+        "url": "https://youtu.be/_YrrE0VnTSA?si=V4Rh4HxtLHpEZ2Ps",
+        "name": "Arrivée Dark Vador\n Étoile de la Mort"
     },
     {
-        url: "https://youtu.be/rI2B6QVXFKQ?si=_7z5M-oi1q1C-W0j",
-        name: "Darth Vader's rage"
+        "url": "https://youtu.be/sD8jLq42Td4?si=JkcDyvUkNCUJN3jS",
+        "name": "Darth Vader's rage"
     },
     {
-        url: "https://youtu.be/3dy7laslWBQ?si=nF8LlZmc7PDzP6Ux",
-        name: "VADER EPISODE 1: SHARDS\n OF THE PAST"
+        "url": "https://youtu.be/5_l7ACxmziE?si=5uTDIi1jOk9WJLFS",
+        "name": "VADER EPISODE 1: SHARDS\n OF THE PAST"
     },
     {
-        url: "https://youtu.be/ijp6xxQqNDg?si=3i8-fqSdyGefiBUQ",
-        name: "Je suis ton père!"
+        "url": "https://youtu.be/pfU0QORkRpY?si=2b-ru2Z3Omaq1Mcg",
+        "name": "Je suis ton père!"
     },
     {
-        url: "https://youtu.be/oRWBo6JOs3o?si=eMQK5JqRT8dCCPEX",
-        name: "Darth Vader Goes Shopping"
+        "url": "https://youtu.be/q4xKvHANqjk?si=3syi7a4l1FPUwUsw",
+        "name": "Darth Vader Goes Shopping"
     },
     {
-        url: "https://youtu.be/SvbLv9jML1E?si=ir2nub2cQkbDsITb",
-        name: "Votre manque de foi\n me consterne"
+        "url": "https://youtu.be/BnEgnrUCXPY?si=wby66iWrkMQFYhue",
+        "name": "Votre manque de foi\n me consterne"
     },
     {
-        url: "https://youtu.be/T9w4U-0nSVA?si=D3rCc3HmEW9yzaCO",
-        name: "LA SOUFFRANCE MÈNE\n AU CÔTÉ OBSCUR"
+        "url": "https://youtu.be/hM_8AlSqncI?si=rCiKcFYzltZEvf0P",
+        "name": "LA SOUFFRANCE MÈNE\n AU CÔTÉ OBSCUR"
     },
     {
-        url: "https://youtu.be/XHJj8xiZrQM?si=EHSUmZRZHYj87Otj",
-        name: "Lord Vader: A Star\n Wars Story"
+        "url": "https://youtu.be/nmpwhNquLq4?si=s_51IlGXAydTfpej",
+        "name": "Lord Vader: A Star\n Wars Story"
     },
     {
-        url: "https://www.youtube.com/watch?v=haZhqhjHr8A",
-        name: 'Dark vador "Hommage"'
+        "url": "https://youtu.be/kiTpHaShznE?si=v_BIWyySpKO2-LFU",
+        "name": "Dark vador \"Hommage\""
     }
-];
+]
 
 
 // let detailsImage = [
@@ -182,7 +182,7 @@ window.addEventListener("mousemove", e => {
 
 const music = new Audio("/sounds/music-bg.mp3");
 
-music.volume = 0.1
+music.volume = 0.01
 
 const respiration = new Audio("/sounds/music-bg.mp3")
 respiration.volume = 0.01
@@ -286,16 +286,16 @@ const textureLoader = new THREE.TextureLoader(loadingManager)
 // const imagesLoad9 = textureLoader.load("/images/img9.jpg")
 // const imagesLoad10 = textureLoader.load("/images/img10.jpg")
 
-const imagesLoad1 = textureLoader.load("/images2/image1.avif")
-const imagesLoad2 = textureLoader.load("/images2/image2.avif")
-const imagesLoad3 = textureLoader.load("/images2/image3.avif")
-const imagesLoad4 = textureLoader.load("/images2/image4.avif")
-const imagesLoad5 = textureLoader.load("/images2/image5.avif")
-const imagesLoad6 = textureLoader.load("/images2/image6.avif")
-const imagesLoad7 = textureLoader.load("/images2/image7.avif")
-const imagesLoad8 = textureLoader.load("/images2/image8.avif")
-const imagesLoad9 = textureLoader.load("/images2/image9.avif")
-const imagesLoad10 = textureLoader.load("/images2/image10.avif")
+const imagesLoad1 = textureLoader.load("/photo/image-1.jpg")
+const imagesLoad2 = textureLoader.load("/photo/image-2.jpg")
+const imagesLoad3 = textureLoader.load("/photo/image-3.jpg")
+const imagesLoad4 = textureLoader.load("/photo/image-4.jpg")
+const imagesLoad5 = textureLoader.load("/photo/image-5.jpg")
+const imagesLoad6 = textureLoader.load("/photo/image-6.jpg")
+const imagesLoad7 = textureLoader.load("/photo/image-7.jpg")
+const imagesLoad8 = textureLoader.load("/photo/image-8.jpg")
+const imagesLoad9 = textureLoader.load("/photo/image-9.jpg")
+const imagesLoad10 = textureLoader.load("/photo/image-10.jpg")
 
 const images = [imagesLoad1, imagesLoad2, imagesLoad3, imagesLoad4, imagesLoad5, imagesLoad6, imagesLoad7, imagesLoad8, imagesLoad9, imagesLoad10]
 
@@ -306,8 +306,8 @@ let models = []
 gltfLoader.load(
     "/models/Dark_vador/scene.gltf",
     (gltf) => {
-        gltf.scene.scale.set(5, 5, 5)
-        gltf.scene.position.y = initialPositionMeshY
+        gltf.scene.scale.set(2.71, 2.71, 2.71)
+        gltf.scene.position.y = initialPositionMeshY 
         gltf.scene.rotation.y = initialRotationMeshY
 
         scene.add(gltf.scene)
@@ -319,6 +319,7 @@ gltfLoader.load(
             {
                 child.material.envMapIntensity = debugObject.envMapIntensity
                 child.material.needsUpdate = true
+                // child.material.color.set(0x00ff00)
             }
         })
     },
@@ -334,8 +335,8 @@ let startTouch = 0
 gltfLoader.load(
     "/models/Rock/scene.gltf",
     (gltf) => {
-        gltf.scene.scale.set(2.5, 2, 2.5)
-        gltf.scene.position.y = initialPositionMeshY - 1.73
+        gltf.scene.scale.set(0.01, 0.01, 0.01)
+        gltf.scene.position.y = initialPositionMeshY 
         gltf.scene.rotation.y = initialRotationMeshY
 
         scene.add(gltf.scene)
@@ -383,7 +384,7 @@ debugObject.envMapIntensity = 5
 //-------------------------------------------------------------------------------------------------------------------
 
 // camera
-const camera = new THREE.PerspectiveCamera(75, sizesCanvas.width / sizesCanvas.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(83, sizesCanvas.width / sizesCanvas.height, 0.1, 100)
 camera.position.x = 0
 camera.position.y = 0
 camera.position.z = - 5
@@ -540,7 +541,7 @@ const animationScroll = (e, touchEvent, value, downOrUp) => {
         if (scrollI <= 435 && scrollI >= 0 && models.length === 2) {
             if (touchEvent && downOrUp === "up") scrollI++
             else if (!touchEvent && deltaY > 0) scrollI++
-            const speed = 0.005
+            const speed = 0.003
         
             //------
             // Update mesh
@@ -551,10 +552,10 @@ const animationScroll = (e, touchEvent, value, downOrUp) => {
                 model.rotation.y = (initialRotationMeshY) - scrollI * 0.01355 // End front of camera
             
                 // position
-                if (index === 0) model.position.y = (initialPositionMeshY) - scrollI * (speed * 0.8)
-                else if (index === 1) model.position.y = (initialPositionMeshY - 1.73) - scrollI * (speed * 0.8)
+                if (index === 0) model.position.y = (initialPositionMeshY) - scrollI * (speed * 0.6)
+                else if (index === 1) model.position.y = (initialPositionMeshY - 0) - scrollI * (speed * 0.6)
     
-                model.position.z = - scrollI * (speed * 0.75)
+                model.position.z = - scrollI * (speed * 0.55)
             })
         
             //------
@@ -596,8 +597,130 @@ function getVideoId(url) {
       : null;
 }
 
-window.addEventListener("click", () => {
+function addCards() {
+    // Add the card HTML
+    const main = document.getElementById("player"); // Select the container using ID
+    const cardsHTML = `
+        <div class="page-event">
+            <div class="cover">
+                <div class="heading">events</div>
+            </div>
+            <div class="container">
+                <div class="upcoming-sec">
+                <div class="heading">Upcoming Events</div>
+                </div>
+                <div class="upcoming-event-list">
+                <div class="event-block">
+                    <div class="row">
+                    <div class="col-lg-2 sec-1">
+                        <table>
+                        <tr>
+                            <td>
+                            <div class="month">Sep</div>
+                            <div class="month-date-devider"></div>
+                            <div class="date">21</div>
+                            </td>
+                            <td class="title">Alexia - a tribute to Rekha</td>
+                        </tr>
+                        </table>
+                    </div>
+                    <div class="col-lg-5 sec-2">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+                    </div>
+                    <div class="col-lg-5 sec-3">
+                        <div class="title">DASTAAN - a tribute to Rekha</div>
+                        <div class="venue">
+                        <table>
+                            <tr>
+                            <td><i class="fa fa-map-marker"></i></td>
+                            <td>
+                                <div>Gyan Manch</div>
+                                <div class="dim-color">
+                                <a href="https://www.google.co.in" target="blank">Get Directions</a>
+                                </div>
+                            </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div class="time">
+                        <table>
+                            <tr>
+                            <td><i class="fa fa-clock-o"></i></td>
+                            <td>
+                                <div>Saturday, Sep 21, 2024 at 5:30 PM</div>
+                                <div data-livestamp="1517054400" class="dim-color"></div>
+                            </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div class="sort-story">"For a woman to be complete, she has to be a blend of Paro & Chandramukhi. I feel that I am that woman." - Rekha</div>
+                        <div class="group-of-btn">
+                        <a href="https://www.google.com" target="blank" class="btn book-ticket">Book Your Entry Pass</a>
+                        </div>
+                    </div>
+                    <div class="logo-image">
+                        <img src="/kingsway/logo-02.png" />
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    `;
+    main.insertAdjacentHTML('beforeend', cardsHTML);
+
+    // Add the dynamic CSS
+    const style = document.createElement('style');
+    style.id = 'dynamic-style'; // Add an ID for later removal
+    style.innerHTML = `
+        .player {
+            overflow-y: scroll !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+
+        .player-source {
+            position: relative !important;
+            top: 80px !important;
+            left: auto !important;
+            right: auto !important;
+            transform: none !important;
+            min-height: 700px !important;
+        }
+    `;
+    document.head.appendChild(style); // Append the CSS to the document
+}
+
+function removeCards() {
+    console.log('Executing removeCards');
+    const main = document.getElementById("player");
+    const cardSections = main.querySelectorAll('.main-cards');
+    
+    console.log(cardSections); // Ensure that cards are being selected
+
+    // Remove all card sections
+    if (cardSections.length > 0) {
+        cardSections.forEach(cardSection => {
+            cardSection.remove();
+        });
+    }
+
+    
+    if (style.innerHTML) {
+        style.innerHTML='';
+    }
+}
+
+window.addEventListener("click", (event) => {
     handlePlane()
+    const clickedElement = event.target;
+    const pageEventElement = document.querySelector('.page-event');
+
+    if (!clickedElement.classList.contains('started-btn') && !pageEventElement) {
+        addCards()
+    }
+
 })
 
 const handlePlane = () => {
@@ -679,6 +802,13 @@ playerClose.addEventListener("click", () => {
     setTimeout(() => {
         videoLook = false
     }, 500);
+
+    setTimeout(() => {
+        removeCards(); // Now execute the remove after some delay
+        console.log('執行囉');
+    }, 500);
+    
+
 })
 
 // Animation hover plane black and white to color
