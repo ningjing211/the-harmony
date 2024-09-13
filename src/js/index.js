@@ -42,6 +42,21 @@ let lastPosition = {
     rz: null
 }
 
+const localLinks = [].slice.call(document.querySelectorAll('a')).filter((a) => /^#.+/.test(a.getAttribute('href')));
+
+localLinks.forEach((link) => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const eID = this.getAttribute('href').substr(1);
+    const top = Math.max(document.getElementById(eID).offsetTop - 40, 0);
+    window.scroll({ 
+      behavior: 'smooth' ,
+      left: 0,
+      top: top
+    });
+  })
+})
+
 let detailsImage = [
     {
         "url": "https://youtu.be/Yz6Ffc6ShCE?si=iVwHWQeESMZ5N2wR",
@@ -607,65 +622,109 @@ function addCards() {
             </div>
             <div class="container">
                 <div class="upcoming-sec">
-                <div class="heading">Upcoming Events</div>
+                    <div class="heading">Upcoming Events</div>
                 </div>
+
                 <div class="upcoming-event-list">
-                <div class="event-block">
-                    <div class="row">
-                    <div class="col-lg-2 sec-1">
-                        <table>
-                        <tr>
-                            <td>
-                            <div class="month">Sep</div>
-                            <div class="month-date-devider"></div>
-                            <div class="date">21</div>
-                            </td>
-                            <td class="title">Alexia - a tribute to Rekha</td>
-                        </tr>
-                        </table>
-                    </div>
-                    <div class="col-lg-5 sec-2">
-                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-                    <div class="col-lg-5 sec-3">
-                        <div class="title">DASTAAN - a tribute to Rekha</div>
-                        <div class="venue">
-                        <table>
-                            <tr>
-                            <td><i class="fa fa-map-marker"></i></td>
-                            <td>
-                                <div>Gyan Manch</div>
-                                <div class="dim-color">
-                                <a href="https://www.google.co.in" target="blank">Get Directions</a>
+                    <div class="event-block">
+                        <div class="row">
+                            
+                            <div class="col-lg-2 sec-1">
+                                <table>
+                                <tr>
+                                    <td>
+                                    <div class="month">Sep</div>
+                                    <div class="month-date-devider"></div>
+                                    <div class="date">21</div>
+                                    </td>
+                                    <td class="title">Alexia - a tribute to Rekha</td>
+                                </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-lg-5 sec-2">
+                                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+                            </div>
+
+                            <div class="col-lg-5 sec-3">
+                                <div class="title">DASTAAN - a tribute to Rekha</div>
+                                <div class="venue">
+                                    <table>
+                                        <tr>
+                                        <td><i class="fa fa-map-marker"></i></td>
+                                        <td>
+                                            <div>Gyan Manch</div>
+                                            <div class="dim-color">
+                                            <a href="https://www.google.co.in" target="blank">Get Directions</a>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                    </table>
                                 </div>
-                            </td>
-                            </tr>
-                        </table>
-                        </div>
-                        <div class="time">
-                        <table>
-                            <tr>
-                            <td><i class="fa fa-clock-o"></i></td>
-                            <td>
-                                <div>Saturday, Sep 21, 2024 at 5:30 PM</div>
-                                <div data-livestamp="1517054400" class="dim-color"></div>
-                            </td>
-                            </tr>
-                        </table>
-                        </div>
-                        <div class="sort-story">"For a woman to be complete, she has to be a blend of Paro & Chandramukhi. I feel that I am that woman." - Rekha</div>
-                        <div class="group-of-btn">
-                        <a href="https://www.google.com" target="blank" class="btn book-ticket">Book Your Entry Pass</a>
-                        </div>
-                    </div>
-                    <div class="logo-image">
-                        <img src="/kingsway/logo-02.png" />
-                    </div>
-                    </div>
+
+                                <div class="time">
+                                    <table>
+                                        <tr>
+                                        <td><i class="fa fa-clock-o"></i></td>
+                                        <td>
+                                            <div>Saturday, Sep 21, 2024 at 5:30 PM</div>
+                                            <div data-livestamp="1517054400" class="dim-color"></div>
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sort-story">"For a woman to be complete, she has to be a blend of Paro & Chandramukhi. I feel that I am that woman." - Rekha</div>
+                                    <div class="group-of-btn">
+                                        <a href="https://www.google.com" target="blank" class="btn book-ticket">Book Your Entry Pass</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>    
+                    </div> 
                 </div>
+                <div class="logo-image">
+                    <img src="/kingsway/logo-02.png">
+                </div>
+            </div>
+        <div class="container">
+        <div class="header-image"></div>
+        <div class="event-page">
+            <div class="event-page__title"> Kingsway Opening Festival 2024</div>
+                <div class="event-page__content">
+                <section>
+                    <h2 id="overview">Overview</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum magni consectetur velit omnis at, nihil deleniti labore similique <a href="#">maxime</a> amet eum sapiente harum consequatur quas blanditiis perspiciatis doloribus fugit! Est, iure?</p>
+                    <p>Culpa tempore rerum dignissimos dicta omnis, quibusdam sapiente dolor unde qui aperiam modi excepturi laborum quidem facilis molestias maiores, exercitationem accusamus ex perspiciatis hic commodi obcaecati cum neque! Harum, soluta?</p>
+                    <p>Alias modi, nesciunt dicta error quasi fugit incidunt commodi. Eligendi qui alias molestiae quas sunt nihil obcaecati voluptatum non? Voluptatum nam ex iusto. Voluptatem laudantium perspiciatis rerum, consequatur velit vel.</p>
+                </section>
+                <section>
+                    <h2 id="schedule">Schedule</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum magni consectetur velit omnis at, nihil deleniti labore similique <a href="#">maxime</a> amet eum sapiente harum consequatur quas blanditiis perspiciatis doloribus fugit! Est, iure?</p>
+                    <p>Culpa tempore rerum dignissimos dicta omnis, quibusdam sapiente dolor unde qui aperiam modi excepturi laborum quidem facilis molestias maiores, exercitationem accusamus ex perspiciatis hic commodi obcaecati cum neque! Harum, soluta?</p>
+                    <p>Alias modi, nesciunt dicta error quasi fugit incidunt commodi. Eligendi qui alias molestiae quas sunt nihil obcaecati voluptatum non? Voluptatum nam ex iusto. Voluptatem laudantium perspiciatis rerum, consequatur velit vel.</p>
+                </section>
+                <section>
+                    <h2 id="venue">Venue</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum magni consectetur velit omnis at, nihil deleniti labore similique <a href="#">maxime</a> amet eum sapiente harum consequatur quas blanditiis perspiciatis doloribus fugit! Est, iure?</p>
+                    <p>Quo repudiandae harum asperiores illo. Vitae dolorum sit iusto, non temporibus error provident deleniti expedita! Ullam quod ad, <a href="sfdlk">maxime</a>, possimus est nesciunt hic, fugit eum dolorum omnis optio velit perferendis.</p>
+                </section>
+                <section>
+                    <h2 id="ticket">Get Tickets!</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum magni consectetur velit omnis at, nihil deleniti labore similique <a href="#">maxime</a> amet eum sapiente harum consequatur quas blanditiis perspiciatis doloribus fugit! Est, iure?</p>
+                    <p>Culpa tempore rerum dignissimos dicta omnis, quibusdam sapiente dolor unde qui aperiam modi excepturi laborum quidem facilis molestias maiores, exercitationem accusamus ex perspiciatis hic commodi obcaecati cum neque! Harum, soluta?</p>
+                    <p>Alias modi, nesciunt dicta error quasi fugit incidunt commodi. Eligendi qui alias molestiae quas sunt nihil obcaecati voluptatum non? Voluptatum nam ex iusto. Voluptatem laudantium perspiciatis rerum, consequatur velit vel.</p>
+                </section>
                 </div>
             </div>
         </div>
+        <ul class="event-page__nav">
+        <li><a href="#overview" title="Overview"><i class="fal fa-ellipsis-h-alt"></i></a></li>
+        <li><a href="#schedule" title="Schedule"><i class="fal fa-list"></i></a></li>
+        <li><a href="#venue" title="Venue"><i class="fal fa-map-marker-alt"></i></a></li>
+        <li><a href="#ticket" title="Get Ticket"><i class="fal fa-ticket-alt"></i></a></li>
+        </ul>
     `;
     main.insertAdjacentHTML('beforeend', cardsHTML);
 
