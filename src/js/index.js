@@ -197,7 +197,7 @@ window.addEventListener("mousemove", e => {
 
 const music = new Audio("/sounds/music-bg.mp3");
 
-music.volume = 0.01
+music.volume = 0.1
 
 const respiration = new Audio("/sounds/music-bg.mp3")
 respiration.volume = 0.01
