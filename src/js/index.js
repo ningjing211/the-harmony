@@ -195,7 +195,7 @@ window.addEventListener("mousemove", e => {
 
 // Audio
 
-const music = new Audio("/sounds/music-bg.mp3");
+const music = new Audio("/sounds/Love-Loop-To-Fade.mp3");
 
 music.volume = 0.1
 
@@ -321,9 +321,10 @@ let models = []
 gltfLoader.load(
     "/models/Dark_vador/scene.gltf",
     (gltf) => {
-        gltf.scene.scale.set(2.71, 2.71, 2.71)
+        gltf.scene.scale.set(10, 10, 10)
         gltf.scene.position.y = initialPositionMeshY 
         gltf.scene.rotation.y = initialRotationMeshY
+
 
         scene.add(gltf.scene)
         models.push(gltf.scene)
@@ -684,9 +685,9 @@ function addCards() {
                         </div>    
                     </div> 
                 </div>
-                <div class="logo-image">
-                    <img src="/kingsway/logo-02.png">
-                </div>
+                <!-- <div class="logo-image">
+                     <img src="/kingsway/logo-02.png">
+                 </div> -->
             </div>
         <div class="container">
         <div class="header-image"></div>
