@@ -544,23 +544,27 @@ renderer.autoClear = false
 //-------------------------------------------------------------------------------------------------------------------
 
 // Add event listener for keydown
-window.addEventListener("keydown", function(event) {
-    // Set a larger scroll step for keyboard interaction
-    const scrollStep = 50;  // You can adjust this value to control the scroll sensitivity
+if (!("ontouchstart" in window)) {
 
-    // Check for both ArrowRight and ArrowDown to scroll down
-    if (event.code === 'ArrowRight' || event.code === 'ArrowDown') {
-        // Simulate mouse wheel scroll down with larger scroll step
-        let e = { deltaY: scrollStep }; // Increase the deltaY value for more scrolling
-        animationScroll(e, false); // Trigger the scroll function with this mock event
-    } 
-    // Check for both ArrowLeft and ArrowUp to scroll up
-    else if (event.code === 'ArrowLeft' || event.code === 'ArrowUp') {
-        // Simulate mouse wheel scroll up with larger scroll step
-        let e = { deltaY: -scrollStep }; // Increase the deltaY value for more scrolling
-        animationScroll(e, false); // Trigger the scroll function
-    }
-});
+    window.addEventListener("keydown", function(event) {
+        // Set a larger scroll step for keyboard interaction
+        const scrollStep = 50;  // You can adjust this value to control the scroll sensitivity
+
+        // Check for both ArrowRight and ArrowDown to scroll down
+        if (event.code === 'ArrowRight' || event.code === 'ArrowDown') {
+            // Simulate mouse wheel scroll down with larger scroll step
+            let e = { deltaY: scrollStep }; // Increase the deltaY value for more scrolling
+            animationScroll(e, false); // Trigger the scroll function with this mock event
+        } 
+        // Check for both ArrowLeft and ArrowUp to scroll up
+        else if (event.code === 'ArrowLeft' || event.code === 'ArrowUp') {
+            // Simulate mouse wheel scroll up with larger scroll step
+            let e = { deltaY: -scrollStep }; // Increase the deltaY value for more scrolling
+            animationScroll(e, false); // Trigger the scroll function
+        }
+    });
+
+}
 
 
 const animationScroll = (e, touchEvent, value, downOrUp) => {
