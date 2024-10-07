@@ -543,72 +543,82 @@ renderer.autoClear = false
 // Animation
 //-------------------------------------------------------------------------------------------------------------------
 
-const animationScroll = (e, touchEvent, value, downOrUp) => {
-    if (touchEvent && downOrUp === "right" && scrollI > 0) {
-        scrollI += value; // Scroll down more when swiping right
-    } else if (touchEvent && downOrUp === "left") {
-        scrollI -= value; // Scroll up more when swiping left
+// Add event listener for keydown
+window.addEventListener("keydown", function(event) {
+    // Set a larger scroll step for keyboard interaction
+    const scrollStep = 50;  // You can adjust this value to control the scroll sensitivity
+
+    // Check for both ArrowRight and ArrowDown to scroll down
+    if (event.code === 'ArrowRight' || event.code === 'ArrowDown') {
+        // Simulate mouse wheel scroll down with larger scroll step
+        let e = { deltaY: scrollStep }; // Increase the deltaY value for more scrolling
+        animationScroll(e, false); // Trigger the scroll function with this mock event
+    } 
+    // Check for both ArrowLeft and ArrowUp to scroll up
+    else if (event.code === 'ArrowLeft' || event.code === 'ArrowUp') {
+        // Simulate mouse wheel scroll up with larger scroll step
+        let e = { deltaY: -scrollStep }; // Increase the deltaY value for more scrolling
+        animationScroll(e, false); // Trigger the scroll function
     }
+});
 
-    let deltaY
 
-    if (touchEvent) deltaY = value
-    else deltaY = e.deltaY
+const animationScroll = (e, touchEvent, value, downOrUp) => {
+    let deltaY;
+    
+    // 定義不同的 scrollStep 值
+    const scrollStepKeyboard = 20;  // 鍵盤觸發時的滾動幅度
+    const scrollStepMouse = 3;     // 滑鼠滾輪觸發時的滾動幅度
+
+    if (touchEvent) {
+        deltaY = value; // 當觸控事件發生時，使用傳入的值
+    } else if (e.type === "wheel") {
+        deltaY = e.deltaY > 0 ? scrollStepMouse : -scrollStepMouse; // 滑鼠滾輪事件
+    } else {
+        deltaY = e.deltaY > 0 ? scrollStepKeyboard : -scrollStepKeyboard; // 鍵盤事件
+    }
 
     if (videoLook === false && isLoading) {
-        // Known up or down
-        if (touchEvent && downOrUp === "down" && scrollI > 0) scrollI--
-        else if (!touchEvent && deltaY < 0 && scrollI > 0) scrollI--
-    
-        if (scrollI <= 435 && scrollI >= 0 && models.length === 2) {
-            if (touchEvent && downOrUp === "up") scrollI++
-            else if (!touchEvent && deltaY > 0) scrollI++
-            const speed = 0.003
-        
-            //------
-            // Update mesh
-            //------
-        
-            models.forEach((model, index) => {
-                // rotation
-                model.rotation.y = (initialRotationMeshY) - scrollI * 0.01355 // End front of camera
-            
-                // position
-                if (index === 0) model.position.y = (initialPositionMeshY) - scrollI * (speed * 0.6)
-                else if (index === 1) model.position.y = (initialPositionMeshY - 0) - scrollI * (speed * 0.6)
-    
-                model.position.z = - scrollI * (speed * 0.55)
-            })
-        
-            //------
-            // Update group of planes
-            //------
-            
-            for (let i = 0; i < groupPlane.children.length; i++) {
-                const plane = groupPlane.children[i]
-                const text = groupText.children[i]
-    
-                // Planes -------
-                // Position
-                plane.position.z = - Math.sin(i + 1 * scrollI * (speed * 10)) * Math.PI
-                plane.position.x = - Math.cos(i + 1 * scrollI * (speed * 10)) * Math.PI
-                plane.position.y = (i - 14.2) + (scrollI * (speed * 10))
-    
-                // Rotation
-                plane.lookAt(0, plane.position.y, 0)
-    
-                // Text -------
-                // Position
-                text.position.z = plane.position.z - 0.5
-                text.position.x = plane.position.x
-                text.position.y = plane.position.y - 0.3
+        if (deltaY < 0 && scrollI > 0) {
+            scrollI -= Math.abs(deltaY); // 向上滾動
+        } else if (deltaY > 0 && scrollI <= 435) {
+            scrollI += Math.abs(deltaY); // 向下滾動
+        }
 
-                // Rotation
-                text.lookAt(plane.position.x * 2, plane.position.y - 0.3, plane.position.z * 2)
+        const speed = 0.01; // 控制滾動速度的係數
+
+        // 更新模型位置
+        models.forEach((model, index) => {
+            model.rotation.y = (initialRotationMeshY) - scrollI * 0.01355; // 更新旋轉
+            if (index === 0) {
+                model.position.y = (initialPositionMeshY) - scrollI * (speed * 0.6); // 更新 Y 位置
+            } else if (index === 1) {
+                model.position.y = (initialPositionMeshY - 0) - scrollI * (speed * 0.6);
             }
+            model.position.z = - scrollI * (speed * 0.55); // 更新 Z 位置
+        });
+
+        // 更新平面和文字位置
+        for (let i = 0; i < groupPlane.children.length; i++) {
+            const plane = groupPlane.children[i];
+            const text = groupText.children[i];
+
+            plane.position.z = - Math.sin(i + 1 * scrollI * (speed * 10)) * Math.PI;
+            plane.position.x = - Math.cos(i + 1 * scrollI * (speed * 10)) * Math.PI;
+            plane.position.y = (i - 14.2) + (scrollI * (speed * 10));
+
+            plane.lookAt(0, plane.position.y, 0); // 更新平面朝向
+
+            text.position.z = plane.position.z - 0.5;
+            text.position.x = plane.position.x;
+            text.position.y = plane.position.y - 0.3;
+
+            text.lookAt(plane.position.x * 2, plane.position.y - 0.3, plane.position.z * 2); // 更新文字朝向
         }
     }
-}
+};
+
+
 
 function getVideoId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
