@@ -545,9 +545,9 @@ renderer.autoClear = false
 
 const animationScroll = (e, touchEvent, value, downOrUp) => {
     if (touchEvent && downOrUp === "right" && scrollI > 0) {
-        scrollI -= value; // Scroll down more when swiping right
+        scrollI += value; // Scroll down more when swiping right
     } else if (touchEvent && downOrUp === "left") {
-        scrollI += value; // Scroll up more when swiping left
+        scrollI -= value; // Scroll up more when swiping left
     }
 
     let deltaY
