@@ -1,6 +1,6 @@
 let startTouchX = 0;
 let startTouchY = 0;
-let scrollMultiplier = 100; // Adjust this value to control the scroll sensitivity
+let scrollMultiplier = 500; // Adjust this value to control the scroll sensitivity
 
 
 window.addEventListener('touchstart', (e) => {
