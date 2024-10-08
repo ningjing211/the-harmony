@@ -368,24 +368,32 @@ gltfLoader.load(
         })
 
         // Event Animation
-        if("ontouchstart" in window) {
+        let startTouch = 0;
 
+        // Touch event handling
+        if ("ontouchstart" in window) {
             window.addEventListener('touchstart', (e) => {
-                startTouch = e.touches[0].clientY
-            }, false)
+                startTouch = e.touches[0].clientY; // 記錄初始觸控位置
+            }, false);
 
             window.addEventListener('touchmove', (e) => {
-                // animationScroll(e)
-                if (e.touches[0].clientY < startTouch) {
-                    startTouch = e.touches[0].clientY
-                    animationScroll(e, true, startTouch, "up")
-                } else {
-                    startTouch = e.touches[0].clientY
-                    animationScroll(e, true, startTouch, "down")
-                }
-            }, false)
+                const currentTouch = e.touches[0].clientY;
+                let touchDelta = startTouch - currentTouch; // 計算觸控移動的差值
+                startTouch = currentTouch; // 更新 startTouch 位置，供下次使用
 
-         } else window.addEventListener("wheel", (e) => animationScroll(e), false)
+                // 將觸控差值縮小，確保滾動不會太突然
+                const scaledDelta = touchDelta * 0.1;
+
+                if (touchDelta > 0) {
+                    animationScroll(e, true, scaledDelta, "up");  // 向上滾動
+                } else {
+                    animationScroll(e, true, scaledDelta, "down"); // 向下滾動
+                }
+            }, false);
+        } else {
+            window.addEventListener("wheel", (e) => animationScroll(e), false);
+        }
+
     },
     undefined,
     (err) => {
