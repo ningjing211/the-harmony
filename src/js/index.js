@@ -511,7 +511,20 @@ for (let i = 0; i < 10; i++) {
     newText.position.z = plane.position.z
         
     groupText.add(newText)
+
+     // 新增點擊事件監聽器
+     plane.userData = { url: detailsImage[i].url }; // 把每個URL綁定到plane的userData上
+     plane.addEventListener('click', (event) => {
+         handleImageClick(event);
+     });
+ 
+     newText.userData = { url: detailsImage[i].url }; // 把每個URL綁定到文字的userData上
+     newText.addEventListener('click', (event) => {
+         handleImageClick(event);
+     });
 }
+
+
 
 //-------------------------------------------------------------------------------------------------------------------
 // Particules
