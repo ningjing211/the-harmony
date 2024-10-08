@@ -369,25 +369,38 @@ gltfLoader.load(
 
         // Event Animation
         let startTouch = 0;
+        let startTouchX = 0;
 
-        // Touch event handling
+        // Touch event handling for horizontal swipe
         if ("ontouchstart" in window) {
             window.addEventListener('touchstart', (e) => {
-                startTouch = e.touches[0].clientY; // 記錄初始觸控位置
+                startTouch = e.touches[0].clientY; // 記錄初始觸控位置（垂直方向）
+                startTouchX = e.touches[0].clientX; // 記錄初始觸控位置（水平方向）
             }, false);
 
             window.addEventListener('touchmove', (e) => {
-                const currentTouch = e.touches[0].clientY;
-                let touchDelta = startTouch - currentTouch; // 計算觸控移動的差值
-                startTouch = currentTouch; // 更新 startTouch 位置，供下次使用
+                const currentTouchY = e.touches[0].clientY;
+                const currentTouchX = e.touches[0].clientX;
 
-                // 將觸控差值縮小，確保滾動不會太突然
-                const scaledDelta = touchDelta * 0.1;
+                let touchDeltaY = startTouch - currentTouchY; // 計算垂直方向移動差值
+                let touchDeltaX = startTouchX - currentTouchX; // 計算水平方向移動差值
+                startTouch = currentTouchY; // 更新起始點位置（垂直）
+                startTouchX = currentTouchX; // 更新起始點位置（水平方向）
 
-                if (touchDelta > 0) {
-                    animationScroll(e, true, scaledDelta, "up");  // 向上滾動
+                // 調整觸控差值縮放因子
+                const scaledDeltaY = touchDeltaY * 0.1;
+                let scaledDeltaX = touchDeltaX * 0.3; // 增大左右滑動效果，統一增大滾動距離
+
+                // 處理垂直方向的滾動
+                if (touchDeltaY > 0) {
+                    animationScroll(e, true, scaledDeltaY, "up");  // 向上滾動
                 } else {
-                    animationScroll(e, true, scaledDelta, "down"); // 向下滾動
+                    animationScroll(e, true, scaledDeltaY, "down"); // 向下滾動
+                }
+
+                // 增加左右滑動的滾動幅度
+                if (touchDeltaX !== 0) {
+                    animationScroll(e, true, scaledDeltaX, touchDeltaX < 0 ? "right" : "left");
                 }
             }, false);
         } else {
@@ -554,19 +567,16 @@ renderer.autoClear = false
 // Add event listener for keydown
 
 window.addEventListener("keydown", function(event) {
-    // Set a larger scroll step for keyboard interaction
-    const scrollStep = 0;  // You can adjust this value to control the scroll sensitivity
-
     // Check for both ArrowRight and ArrowDown to scroll down
     if (event.code === 'ArrowRight' || event.code === 'ArrowDown') {
         // Simulate mouse wheel scroll down with larger scroll step
-        let e = { deltaY: scrollStep }; // Increase the deltaY value for more scrolling
+        let e = { deltaY: 1 }; // Increase the deltaY value for more scrolling
         animationScroll(e, false); // Trigger the scroll function with this mock event
     } 
     // Check for both ArrowLeft and ArrowUp to scroll up
     else if (event.code === 'ArrowLeft' || event.code === 'ArrowUp') {
         // Simulate mouse wheel scroll up with larger scroll step
-        let e = { deltaY: -scrollStep }; // Increase the deltaY value for more scrolling
+        let e = { deltaY: -1 }; // Increase the deltaY value for more scrolling
         animationScroll(e, false); // Trigger the scroll function
     }
 });
