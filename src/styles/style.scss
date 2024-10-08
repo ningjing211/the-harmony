@@ -51,7 +51,7 @@ header {
     right: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background: linear-gradient(#acaac5 0%, #8f87c6 40%, #5fa984 150%), linear-gradient(#00000080 -100%, #fff6 100%);
  background-blend-mode: multiply;
 
     p {
@@ -588,4 +588,193 @@ p a {
       }
     }
   }
+}
+
+// bubble 
+@import 'https://fonts.googleapis.com/css?family=Mouse+Memoirs';
+
+HTML, BODY {
+    width: 100vw;
+    height: 100vh;
+}
+
+BODY {
+    background-color: rgb(145, 225, 228);
+    background: radial-gradient(rgb(224, 200, 224), rgb(184, 175, 233), teal, indigo);
+}
+
+.hidden {
+    display: none;
+}
+
+.marked {
+    outline: 2px solid red;
+    stroke: red;
+    stroke-width: 2;
+}
+
+.svg {
+    position: absolute;
+    width: 250px;
+    height: 250px; 
+    overflow: visible;
+    mix-blend-mode: multiply;
+}
+
+.svg--defs {
+    width: 0;
+    height: 0;
+}
+
+.demo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.demo__title {
+    position: absolute;
+    // z-index: 1;
+    right: 1rem;
+    bottom: 1rem;
+    text-shadow: 0 0 15px rgba(0,0,0,.5);
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: 4.9rem;
+    color: #FFF;    
+    cursor: pointer;
+}
+
+.demo-title__splash {
+    position: absolute;
+    top: -75px;
+    left: -40px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.demo__tip {
+    display: block;
+    font-size: 1rem;
+    font-family: Trebuchet MS;
+}
+
+.bubble {
+    cursor: pointer;
+}
+
+.bubble__splash {
+    opacity: 0;
+    pointer-events: none;
+}
+
+// particles
+
+
+.canvas-webgl {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* mq's */
+@media screen and (max-width: 1195px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/* Animation Link */
+a {
+	color: yellow;
+	font-weight: 100;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:active, a:hover {
+    outline: 0;
+}
+a:after {
+    width: 100%;
+    height: 1px;
+    content: '';
+	  background-color: yellow;
+    display: block;
+    margin-top: 2px;
+    -webkit-animation-name: none;
+    animation-name: none;
+}
+a:hover:after {
+    -webkit-animation-name: crossUnderline;
+    animation-name: crossUnderline;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+    animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+}
+@-webkit-keyframes crossUnderline {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right center;
+        transform-origin: right center;
+    }
+    49.9% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right center;
+        transform-origin: right center;
+    }
+    50% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+    }
+    100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+    }
+}
+
+@keyframes crossUnderline {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right center;
+        transform-origin: right center;
+    }
+    49.9% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right center;
+        transform-origin: right center;
+    }
+    50% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+    }
+    100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+    }
 }
