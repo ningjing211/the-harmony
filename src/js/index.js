@@ -512,48 +512,8 @@ for (let i = 0; i < 10; i++) {
         
     groupText.add(newText)
 
-     // 新增點擊事件監聽器
-     plane.userData = { url: detailsImage[i].url }; // 把每個URL綁定到plane的userData上
-     plane.addEventListener('click', (event) => {
-         handleImageClick(event);
-     });
- 
-     newText.userData = { url: detailsImage[i].url }; // 把每個URL綁定到文字的userData上
-     newText.addEventListener('click', (event) => {
-         handleImageClick(event);
-     });
+    
 }
-
-// Mouse and touch positions
-let touch = new THREE.Vector2();
-const raycaster = new THREE.Raycaster();
-
-// Touch event for mobile
-window.addEventListener('touchstart', (event) => {
-    event.preventDefault();
-
-    // 記錄觸控位置
-    touch.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
-    touch.y = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
-
-    // 設置 Raycaster 並進行碰撞檢測
-    raycaster.setFromCamera(touch, camera);
-    const intersects = raycaster.intersectObjects(groupPlane.children);
-
-    // 如果有模型被點擊
-    if (intersects.length > 0) {
-        const clickedPlane = intersects[0].object;
-        const planeIndex = groupPlane.children.indexOf(clickedPlane);
-
-        // 確保點擊的模型有對應的 URL
-        if (planeIndex !== -1 && detailsImage[planeIndex].url) {
-            const targetUrl = detailsImage[planeIndex].url;
-            window.location.href = targetUrl; // 跳轉到對應的 YouTube 頁面
-        }
-    }
-}, false);
-
-
 
 //-------------------------------------------------------------------------------------------------------------------
 // Particules
@@ -867,6 +827,17 @@ window.addEventListener("click", (event) => {
     }
 
 })
+
+// 新增 touchstart 事件來支援手機點擊
+window.addEventListener("touchstart", (event) => {
+    handlePlane(); // 手機上的觸碰事件處理，與 click 相同
+    const clickedElement = event.target;
+    const pageEventElement = document.querySelector('.page-event');
+
+    if (!clickedElement.classList.contains('started-btn') && !pageEventElement) {
+        addCards();
+    }
+});
 
 const handlePlane = () => {
     if (currentIntersect && videoLook === false && isLoading) {
