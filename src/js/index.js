@@ -524,6 +524,35 @@ for (let i = 0; i < 10; i++) {
      });
 }
 
+// Mouse and touch positions
+let touch = new THREE.Vector2();
+const raycaster = new THREE.Raycaster();
+
+// Touch event for mobile
+window.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+
+    // 記錄觸控位置
+    touch.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+    touch.y = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
+
+    // 設置 Raycaster 並進行碰撞檢測
+    raycaster.setFromCamera(touch, camera);
+    const intersects = raycaster.intersectObjects(groupPlane.children);
+
+    // 如果有模型被點擊
+    if (intersects.length > 0) {
+        const clickedPlane = intersects[0].object;
+        const planeIndex = groupPlane.children.indexOf(clickedPlane);
+
+        // 確保點擊的模型有對應的 URL
+        if (planeIndex !== -1 && detailsImage[planeIndex].url) {
+            const targetUrl = detailsImage[planeIndex].url;
+            window.location.href = targetUrl; // 跳轉到對應的 YouTube 頁面
+        }
+    }
+}, false);
+
 
 
 //-------------------------------------------------------------------------------------------------------------------
