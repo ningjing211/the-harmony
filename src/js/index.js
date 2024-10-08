@@ -567,9 +567,12 @@ window.addEventListener("keydown", function(event) {
 const animationScroll = (e, touchEvent, value, downOrUp) => {
     let deltaY;
     
-    // 定義不同的 scrollStep 值
-    const scrollStepKeyboard = 20;  // 鍵盤觸發時的滾動幅度
-    const scrollStepMouse = 3;     // 滑鼠滾輪觸發時的滾動幅度
+    // 檢查是否為手機裝置
+    const isMobile = window.innerWidth <= 768;
+
+    // 定義不同的 scrollStep 值，如果是手機，則設置為 0
+    const scrollStepKeyboard = isMobile ? 0 : 20;  // 鍵盤觸發時的滾動幅度
+    const scrollStepMouse = isMobile ? 0 : 3;     // 滑鼠滾輪觸發時的滾動幅度
 
     if (touchEvent) {
         deltaY = value; // 當觸控事件發生時，使用傳入的值
