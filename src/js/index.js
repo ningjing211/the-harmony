@@ -547,7 +547,7 @@ renderer.autoClear = false
 
 window.addEventListener("keydown", function(event) {
     // Set a larger scroll step for keyboard interaction
-    const scrollStep = 50;  // You can adjust this value to control the scroll sensitivity
+    const scrollStep = 0;  // You can adjust this value to control the scroll sensitivity
 
     // Check for both ArrowRight and ArrowDown to scroll down
     if (event.code === 'ArrowRight' || event.code === 'ArrowDown') {
