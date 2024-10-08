@@ -566,23 +566,27 @@ window.addEventListener("keydown", function(event) {
 
 const animationScroll = (e, touchEvent, value, downOrUp) => {
     let deltaY;
-    
+
     // 檢查是否為手機裝置
     const isMobile = window.innerWidth <= 768;
 
-    // 定義不同的 scrollStep 值，如果是手機，則設置為 0
-    const scrollStepKeyboard = isMobile ? 0 : 20;  // 鍵盤觸發時的滾動幅度
-    const scrollStepMouse = isMobile ? 0 : 3;     // 滑鼠滾輪觸發時的滾動幅度
+    if (touchEvent && isMobile) {
+        // 如果是手機並且是觸控事件，直接使用傳入的值
+        deltaY = value;
+    } else if (!isMobile) {
+        // 非手機裝置處理滑鼠滾輪和鍵盤事件
+        const scrollStepKeyboard = 20;  // 鍵盤觸發時的滾動幅度
+        const scrollStepMouse = 3;      // 滑鼠滾輪觸發時的滾動幅度
 
-    if (touchEvent) {
-        deltaY = value; // 當觸控事件發生時，使用傳入的值
-    } else if (e.type === "wheel") {
-        deltaY = e.deltaY > 0 ? scrollStepMouse : -scrollStepMouse; // 滑鼠滾輪事件
-    } else {
-        deltaY = e.deltaY > 0 ? scrollStepKeyboard : -scrollStepKeyboard; // 鍵盤事件
+        if (e.type === "wheel") {
+            deltaY = e.deltaY > 0 ? scrollStepMouse : -scrollStepMouse; // 滑鼠滾輪事件
+        } else {
+            deltaY = e.deltaY > 0 ? scrollStepKeyboard : -scrollStepKeyboard; // 鍵盤事件
+        }
     }
 
-    if (videoLook === false && isLoading) {
+    // 確認是否在正確狀態下滾動
+    if (videoLook === false && isLoading && typeof deltaY !== 'undefined') {
         if (deltaY < 0 && scrollI > 0) {
             scrollI -= Math.abs(deltaY); // 向上滾動
         } else if (deltaY > 0 && scrollI <= 435) {
@@ -621,6 +625,7 @@ const animationScroll = (e, touchEvent, value, downOrUp) => {
         }
     }
 };
+
 
 
 
